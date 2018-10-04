@@ -51,6 +51,10 @@ class ApiController extends Controller
      */
     public function respond($data, $headers = [])
     {
+        $headers = [
+            'Access-Control-Allow-Origin' => '*',
+            'Content-Type' => 'application/json'
+        ];
         return new JsonResponse($data, $this->getStatusCode(), $headers);
     }
 
@@ -66,6 +70,7 @@ class ApiController extends Controller
             'errors' => $errors,
         ];
 
+        $headers = ['Access-Control-Allow-Origin' => '*'];
         return new JsonResponse($data, $this->getStatusCode(), $headers);
     }
 
